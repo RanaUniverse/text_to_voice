@@ -4,7 +4,7 @@ import edge_tts
 import pygame
 
 
-async def say(text: str, voice="en-US-AriaNeural"):
+async def say(text: str, voice: str = "en-US-AriaNeural"):
     # Stream audio directly into memory
     communicate = edge_tts.Communicate(text, voice)
     audio_stream = io.BytesIO()
@@ -24,7 +24,11 @@ async def say(text: str, voice="en-US-AriaNeural"):
         pygame.time.Clock().tick(10)
 
 
-async def save_audio(text, filename="output.mp3", voice="en-US-AriaNeural"):
+async def save_audio(
+    text,
+    filename="output.mp3",
+    voice="en-US-AriaNeural",
+):
     communicate = edge_tts.Communicate(text, voice)
     await communicate.save(filename)
     print(f"Saved successfully as {filename}")
@@ -45,12 +49,24 @@ voice_agent = "en-IN-NeerjaExpressiveNeural"
 # voice_agent = "bg-BG-BorislavNeural"
 # voice_agent = "bn-IN-TanishaaNeural"
 
-asyncio.run(
-    say(
+# asyncio.run(
+#     say(
+#         text,
+#         voice=voice_agent,
+#     )
+# )
+
+
+# asyncio.run(save_audio(text, "my_voice.mp3"))
+
+
+async def main():
+    text = "আমি আজ Suno AI Song Download ওয়েবসাইটে গিয়েছিলাম, it was really fast!"
+    await save_audio(
         text,
+        "mixed.mp3",
         voice=voice_agent,
     )
-)
 
 
-asyncio.run(save_audio("Hello! This is saved directly as an MP3 file.", "my_voice.mp3"))
+asyncio.run(main())
