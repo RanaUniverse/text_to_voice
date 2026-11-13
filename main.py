@@ -56,8 +56,7 @@ text = "সন্ধেবেলা সে বাড়ির পেছনের �
 text = "আমি আজ Suno AI Song Download ওয়েবসাইটে গিয়েছিলাম, it was really fast!"
 
 voice_agent = "en-IN-NeerjaExpressiveNeural"
-# voice_agent = "bg-BG-BorislavNeural"
-# voice_agent = "bn-IN-TanishaaNeural"
+voice_agent = "bn-IN-TanishaaNeural"
 
 # asyncio.run(
 #     say(
@@ -76,7 +75,14 @@ async def main():
     text = "আমি আজ Suno AI Song Download ওয়েবসাইটে গিয়েছিলাম, it was really fast!"
 
     text = """
-The little mouse trembled and cried, "Please, O King, let me go! I am so small. If you spare me today, I will surely help you one day."
+এক টুকরো রোদ
+
+ছোট্ট একটা গ্রাম ‘নন্দনপুর’। সেখানে থাকত ছোট্ট একটা ছেলে, নাম তার রতন। বয়স মোটে আট বছর। রতনের খুব শখ ছিল একটা জোনাকি পোকা ধরার। রোজ সন্ধেবেলা সে বাড়ির পেছনের লেবুর বাগানে ঘুরত, কিন্তু একটাও জোনাকি তার হাতে ধরা দিত না।
+একদিন খুব বৃষ্টি হলো। বিকেলবেলা বৃষ্টি থামার পর রতন বারান্দায় এসে দাঁড়াল। দেখল, ভিজে ঘাসের ওপর একটা ছোট্ট হলুদ প্রজাপতি বসে আছে, যার ডানায় বৃষ্টির ফোঁটা মুক্তোর মতো চকচক করছে।
+রতন আস্তে করে এগিয়ে গিয়ে তার হাতটা বাড়িয়ে দিল। প্রজাপতিটা উড়ল না, বরং উড়ে এসে রতনের ছোট্ট আঙুলের ডগায় বসল। রতনের মনে হলো, সে যেন আকাশের এক টুকরো রোদ নিজের হাতে পেয়ে গেছে।
+সেদিন রাতে ঘুমাতে যাওয়ার সময় রতন তার মাকে বলল, "মা, আজ আমি রোদ ধরেছিলাম।"
+মা হেসে মাথায় হাত বুলিয়ে বললেন, "রোদ কি আর ধরা যায় সোনা? ও তো সবার জন্য।"
+রতন মনে মনে ভাবল— সবার জন্য হলেও, আজ কিছুক্ষণ তো ও শুধু আমারই ছিল!
 """
     await save_audio(
         text,
@@ -84,7 +90,7 @@ The little mouse trembled and cried, "Please, O King, let me go! I am so small. 
         voice=voice_agent,
         rate="+20%",  # faster
         volume="+50%",  # louder
-        pitch="+5Hz",
+        pitch="+50Hz",
     )
 
 
