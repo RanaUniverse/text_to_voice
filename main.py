@@ -1,10 +1,11 @@
 import asyncio
 import io
 import edge_tts
-import pygame
 
 
 async def say(text: str, voice: str = "en-US-AriaNeural"):
+    import pygame
+
     # Stream audio directly into memory
     communicate = edge_tts.Communicate(text, voice)
     audio_stream = io.BytesIO()
@@ -28,8 +29,17 @@ async def save_audio(
     text,
     filename="output.mp3",
     voice="en-US-AriaNeural",
+    rate="+0%",
+    volume="+0%",
+    pitch="+0Hz",
 ):
-    communicate = edge_tts.Communicate(text, voice)
+    communicate = edge_tts.Communicate(
+        text,
+        voice,
+        rate=rate,
+        volume=volume,
+        pitch=pitch,
+    )
     await communicate.save(filename)
     print(f"Saved successfully as {filename}")
 
@@ -42,8 +52,8 @@ async def save_audio(
 text = "Visit Our Website: www.SunoAiSongDownload.Online"
 
 text = "সন্ধেবেলা সে বাড়ির পেছনের লেবুর বাগানে ঘুরত, কিন্তু একটাও জোনাকি তার হাতে ধরা দিত না"
-text = "আমি আজ Suno AI Song Download ওয়েবসাইটে গিয়েছিলাম, it was really fast!"
 
+text = "আমি আজ Suno AI Song Download ওয়েবসাইটে গিয়েছিলাম, it was really fast!"
 
 voice_agent = "en-IN-NeerjaExpressiveNeural"
 # voice_agent = "bg-BG-BorislavNeural"
@@ -61,11 +71,20 @@ voice_agent = "en-IN-NeerjaExpressiveNeural"
 
 
 async def main():
+    # for now i want to use single voice here not separat of language
+
     text = "আমি আজ Suno AI Song Download ওয়েবসাইটে গিয়েছিলাম, it was really fast!"
+
+    text = """
+The little mouse trembled and cried, "Please, O King, let me go! I am so small. If you spare me today, I will surely help you one day."
+"""
     await save_audio(
         text,
         "mixed.mp3",
         voice=voice_agent,
+        rate="+20%",  # faster
+        volume="+50%",  # louder
+        pitch="+5Hz",
     )
 
 
